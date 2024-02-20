@@ -24,6 +24,16 @@ public_users.post("/register", (req,res) => {
 public_users.get('/',function (req, res) {
   //Write your code here
   return res.send(JSON.stringify(books, null, 4));
+
+
+    //Promises Code
+  // let Promise1 = new Promise((resolve, reject)=>{
+  //   resolve({"books":books});
+  // })
+  // Promise1.then((result) => {
+  //   res.status(200).send(result);
+  // })
+
 });
 
 // Get book details based on ISBN
@@ -31,6 +41,18 @@ public_users.get('/isbn/:isbn',function (req, res) {
   //Write your code here
     const ISBN = req.params.isbn;
     return res.send(books[ISBN])
+
+    
+  //Promises Code
+  // isbn = req.params.isbn;
+  // let Promise2 = new Promise((resolve, reject)=>{
+  //   requestedBook = books[isbn];
+  //   resolve(requestedBook);
+  // })
+  // Promise2.then((result)=>{
+  //   res.status(200).send(result);
+  // })
+
  });
   
 // Get book details based on author
@@ -52,6 +74,22 @@ public_users.get('/author/:author',function (req, res) {
       return res.send(JSON.stringify(result, null, 4))
   }
   return res.status(404).json({message: "author not found"});
+
+
+  
+  //Promises Code
+  // author = req.params.author;
+  // let Promise1 = new Promise((resolve, reject)=>{
+  //   booksByAuthor = [];
+  //   for(key in books){
+  //     if(books[key].author == author){booksByAuthor.push(books[key])}
+  //   }
+  //   resolve(booksByAuthor);
+  // })
+  // Promise1.then((result)=>{
+  //   res.status(200).json({"booksbyauthor" : result});
+  // })
+
 });
 
 // Get all books based on title
@@ -66,6 +104,20 @@ public_users.get('/title/:title',function (req, res) {
       }
   }
   return res.status(404).json({message: "title not found"});
+
+  //Promises Code
+  // title = req.params.title;
+  // let Promise1 = new Promise((resolve, reject)=>{
+  //   booksByTitle = [];
+  //   for(key in books){
+  //     if(books[key].title == title){booksByTitle.push(books[key])}
+  //   }
+  //   resolve(booksByTitle);
+  // })
+  // Promise1.then((result)=>{
+  //   res.status(200).json({"booksbytitle" : result});
+  // })
+
 });
 
 //  Get book review
